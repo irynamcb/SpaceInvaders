@@ -22,17 +22,12 @@ Game.prototype.shipPosition = function () {
     return pos;
 }
 
-// Game.prototype.alienPosition = function () {
-//     let x = (Math.random() * Game.DIM_X);
-//     let y = (Math.random() * Game.DIM_Y);
-//     let pos = [x, y];
-//     return pos;
-// }
-
 Game.prototype.addAliens = function () {
+
     let grid = [];
     let alienX = 2 * Alien.RADIUS + 10;
     let alienY = 2 * Alien.RADIUS + 10;
+
     for (let i = 0; i < 10; i++) {
         for (let j = 0; j < 6; j++) {
             grid[i] = new Alien({ pos: [100 + i * alienX, 100 + j * alienY], game: this });

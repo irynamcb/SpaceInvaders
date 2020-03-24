@@ -15,6 +15,7 @@ GameView.prototype.start = function () {
     this.bindKeyHandlers();
 }
 
+
 GameView.prototype.left = function (ship) {
     ship.power([-1, 0]);
 }
