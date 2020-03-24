@@ -13,7 +13,7 @@ function Game() {
 
 Game.prototype.shipPosition = function () {
     let x = (Game.DIM_X/2);
-    let y = (this.ship.RADIUS + 1);
+    let y = (Game.DIM_Y - (Ship.RADIUS + 1));
     let pos = [x, y];
     return pos;
 }
@@ -55,7 +55,7 @@ Game.prototype.remove = function (obj) {
 
 
 Game.prototype.allObjects = function () {
-    let x = this.ship.concat(this.bullets);
+    let x = this.bullets.concat(this.ship)
     return x;
 }
 

@@ -25,10 +25,13 @@ MovingObject.prototype.draw = function (ctx) {
 };
 
 MovingObject.prototype.move = function () {
+    //console.log(this.pos[0], this.pos[1], this)
     let x = (this.pos[0] += this.vel[0]);
     let y = (this.pos[1] += this.vel[1]);
     this.pos = [x, y];
-
+    if (this.vel[1] !== 0) {
+        //debugger
+    }
     if (this.game.isOutOfBounds(this.pos)) {
         // refactor isWrappable and wrap
         if (this.isWrappable) {
@@ -37,6 +40,11 @@ MovingObject.prototype.move = function () {
             this.game.remove(this);
         }
     }
+
+};
+
+
+MovingObject.prototype.collideWith = function (otherObject) {
 
 };
 
