@@ -2,12 +2,14 @@ const MovingObject = require("./moving_object.js");
 const Util = require("./util.js");
 const Ship = require("./ship.js");
 const Bullet = require("./bullet.js");
+const Alien = require("./alien.js");
 
 
 function Game() {
     Game.DIM_X = 800;
     Game.DIM_Y = 800;
     this.bullets = [];
+    this.aliens = [];
     this.ship = new Ship({ pos: this.shipPosition(), game: this })
 }
 
@@ -48,23 +50,26 @@ Game.prototype.step = function () {
 
 Game.prototype.remove = function (obj) {
 
-    if (obj instanceof Bullet) {
+    if (obj instanceof Alien) {
+        this.aliens.splice(this.aliens.indexOf(obj), 1)
+    } else if (obj instanceof Bullet) {
         this.bullets.splice(this.bullets.indexOf(obj), 1)
     }
 }
 
 
 Game.prototype.allObjects = function () {
-    let x = this.bullets.concat(this.ship)
+    let x = this.aliens.concat(this.bullets).concat(this.ship)
     return x;
 }
 
 Game.prototype.add = function (obj) {
 
-    if (obj instanceof Bullet) {
+    if (obj instanceof Alien) {
+        this.aliens.push(obj)
+    } else if (obj instanceof Bullet) {
         this.bullets.push(obj)
     }
-
 }
 
 Game.prototype.isOutOfBounds = function (pos) {
