@@ -19,6 +19,12 @@ function Bullet(options) {
 
 }
 
+Bullet.prototype.checkBoundaryConditions = function () {
+    if (this.isOutOfBounds(this.pos)) {
+        this.game.remove(this);
+    }
+}
+
 Bullet.prototype.isWrappable = false;
 
 module.exports = Bullet;

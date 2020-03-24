@@ -29,19 +29,18 @@ MovingObject.prototype.move = function () {
     let x = (this.pos[0] += this.vel[0]);
     let y = (this.pos[1] += this.vel[1]);
     this.pos = [x, y];
-    if (this.vel[1] !== 0) {
-        //debugger
-    }
-    if (this.game.isOutOfBounds(this.pos)) {
-        // refactor isWrappable and wrap
-        if (this.isWrappable) {
-            this.pos = this.game.wrap(this.pos);
-        } else {
-            this.game.remove(this);
-        }
-    }
+  
+    this.checkBoundaryConditions();
 
 };
+
+MovingObject.prototype.checkBoundaryConditions = function () {
+
+}
+
+MovingObject.prototype.isOutOfBounds = function (pos) {
+    return this.game.isOutOfBounds(pos);
+}
 
 
 MovingObject.prototype.collideWith = function (otherObject) {

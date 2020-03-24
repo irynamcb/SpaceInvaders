@@ -6,6 +6,7 @@ Util.inherits(MovingObject, Ship);
 
 Ship.COLOR = "green";
 Ship.RADIUS = 15;
+Ship.MAX_IMPULSE = 5;
 
 function Ship(options) {
 
@@ -20,9 +21,20 @@ function Ship(options) {
 
 }
 
+Ship.prototype.checkBoundaryConditions = function () {
+    if (this.isOutOfBounds(this.pos)) {
+        let x = (this.pos[0] -= this.vel[0]);
+        let y = (this.pos[1] -= this.vel[1]);
+        this.pos = [x, y];
+        this.vel = [0, 0];
+    }
+}
+
 Ship.prototype.power = function (impulse) {
-    this.vel[0] += impulse[0];
-    this.vel[1] += impulse[1];
+
+    if (Math.abs(this.vel[0]) < Ship.MAX_IMPULSE) {
+        this.vel[0] += impulse[0];
+    } 
 }
 
 Ship.prototype.fireBullet = function () {
