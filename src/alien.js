@@ -6,7 +6,7 @@ const Bullet = require("./bullet.js");
 Util.inherits(MovingObject, Alien);
 
 Alien.COLOR = "blue";
-Alien.RADIUS = 30;
+Alien.RADIUS = 20;
 
 function Alien(options) {
 
@@ -14,7 +14,8 @@ function Alien(options) {
         pos: options.pos,
         color: Alien.COLOR,
         radius: Alien.RADIUS,
-        vel: Util.randomVec(Math.random() * 10),
+        // vel: Util.randomVec(Math.random() * 10),
+        vel: [0, 0],
         game: options.game
     }
     MovingObject.call(this, moOptions);
