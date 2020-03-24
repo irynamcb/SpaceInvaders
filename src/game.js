@@ -4,53 +4,28 @@ const Ship = require("./ship.js");
 const Bullet = require("./bullet.js");
 
 
-function Game(img) {
+function Game() {
     Game.DIM_X = 800;
     Game.DIM_Y = 800;
-
-
     this.bullets = [];
-
-
-
-
-    this.ship = new Ship({ pos: this.randomPosition(), game: this })
+    this.ship = new Ship({ pos: this.shipPosition(), game: this })
 }
 
-Game.prototype.randomPosition = function () {
-    let x = (Math.random() * Game.DIM_X);
-    let y = (Math.random() * Game.DIM_Y);
+Game.prototype.shipPosition = function () {
+    let x = (Game.DIM_X/2);
+    let y = (this.ship.RADIUS + 1);
     let pos = [x, y];
     return pos;
 }
 
-Game.prototype.addAsteroids = function () {
-    let count = 0;
-    while (count < Game.NUM_ASTEROIDS) {
-        let pos = this.randomPosition();
-        let ast2 = new Asteroid({ pos: pos, game: this });
-        this.asteroids.push(ast2);
-        count++;
-    }
-}
 
 Game.prototype.draw = function (ctx) {
     ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
-    ctx.drawImage(this.img, 0, 0);
-    this.allObjects().forEach(asteroid => asteroid.draw(ctx));
+    this.allObjects().forEach(obj => obj.draw(ctx));
 }
 
 Game.prototype.moveObjects = function () {
-    this.allObjects().forEach(asteroid => asteroid.move());
-}
-
-Game.prototype.wrap = function (pos) {
-
-    let newX = ((pos[0] + Game.DIM_X) % Game.DIM_X);
-    let newY = ((pos[1] + Game.DIM_Y) % Game.DIM_Y);
-
-    let newPos = [newX, newY];
-    return newPos;
+    this.allObjects().forEach(obj => obj.move());
 }
 
 Game.prototype.checkCollisions = function () {
@@ -73,24 +48,20 @@ Game.prototype.step = function () {
 
 Game.prototype.remove = function (obj) {
 
-    if (obj instanceof Asteroid) {
-        this.asteroids.splice(this.asteroids.indexOf(obj), 1)
-    } else if (obj instanceof Bullet) {
+    if (obj instanceof Bullet) {
         this.bullets.splice(this.bullets.indexOf(obj), 1)
     }
 }
 
 
 Game.prototype.allObjects = function () {
-    let x = this.asteroids.concat(this.ship).concat(this.bullets);
+    let x = this.ship.concat(this.bullets);
     return x;
 }
 
 Game.prototype.add = function (obj) {
 
-    if (obj instanceof Asteroid) {
-        this.asteroids.push(obj)
-    } else if (obj instanceof Bullet) {
+    if (obj instanceof Bullet) {
         this.bullets.push(obj)
     }
 
