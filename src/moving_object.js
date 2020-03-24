@@ -30,6 +30,7 @@ MovingObject.prototype.move = function () {
     this.pos = [x, y];
 
     if (this.game.isOutOfBounds(this.pos)) {
+        // refactor isWrappable and wrap
         if (this.isWrappable) {
             this.pos = this.game.wrap(this.pos);
         } else {
@@ -47,12 +48,9 @@ MovingObject.prototype.isCollidedWith = function (otherObject) {
 
 };
 
-MovingObject.prototype.collideWith = function (otherObject) {
-
-};
 
 MovingObject.prototype.isWrappable = true;
-
+// nothing should be wrappable 
 
 
 module.exports = MovingObject;
