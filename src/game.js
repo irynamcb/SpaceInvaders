@@ -79,7 +79,8 @@ Game.prototype.remove = function (obj) {
 
 
 Game.prototype.allObjects = function () {
-    let x = this.aliens.concat(this.bullets).concat(this.ship).concat(this.alienBullets);
+    // ship does not collide with anything 
+    let x = this.aliens.concat(this.alienBullets).concat(this.bullets).concat(this.ship);
     return x;
 }
 

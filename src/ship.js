@@ -1,8 +1,6 @@
 const MovingObject = require("./moving_object.js");
 const Util = require("./util.js");
 const Bullet = require("./bullet.js");
-const Alien = require("./alien");
-const AlienBullet = require("./alien_bullet");
 
 
 Util.inherits(MovingObject, Ship);
@@ -45,15 +43,6 @@ Ship.prototype.fireBullet = function () {
     let bullet = new Bullet({ pos: [this.pos[0], this.pos[1]], vel: newVel, game: this.game });
     this.game.add(bullet);
 
-}
-
-Ship.prototype.collideWith = function (otherObject) {
-
-    // for now remove Ship from a game
-    if (otherObject instanceof AlienBullet || otherObject instanceof Alien) {
-        this.game.remove(otherObject);
-        this.game.remove(this);
-    } 
 }
 
 module.exports = Ship;
