@@ -1,16 +1,19 @@
-const Game = require("./game.js")
+const Game = require("./game.js");
+
 
 
 function GameView(game, ctx) {
     this.game = game;
     this.ctx = ctx;
+    this.gameState = game;
 }
 
 GameView.prototype.start = function () {
     let that = this;
+
     setInterval(function () {
-        that.game.step();
-        that.game.draw(that.ctx);
+        that.gameState.step();
+        that.gameState.draw(that.ctx);
     }, 20);
     this.bindKeyHandlers();
 }
