@@ -3,6 +3,8 @@ const Util = require("./util.js");
 const Ship = require("./ship.js");
 const Bullet = require("./bullet.js");
 const Alien = require("./alien.js");
+const AlienBullet = require("./alien_bullet");
+
 
 
 function Game() {
@@ -11,6 +13,7 @@ function Game() {
     
     this.bullets = [];
     this.aliens = [];
+    this.alienBullets=[];
     this.ship = new Ship({ pos: this.shipPosition(), game: this })
     this.addAliens();
 }
@@ -69,12 +72,14 @@ Game.prototype.remove = function (obj) {
         this.aliens.splice(this.aliens.indexOf(obj), 1)
     } else if (obj instanceof Bullet) {
         this.bullets.splice(this.bullets.indexOf(obj), 1)
+    } else if (obj instanceof AlienBullet) {
+        this.alienBullets.splice(this.alienBullets.indexOf(obj), 1)
     }
 }
 
 
 Game.prototype.allObjects = function () {
-    let x = this.aliens.concat(this.bullets).concat(this.ship)
+    let x = this.aliens.concat(this.bullets).concat(this.ship).concat(this.alienBullets);
     return x;
 }
 
@@ -84,6 +89,8 @@ Game.prototype.add = function (obj) {
         this.aliens.push(obj)
     } else if (obj instanceof Bullet) {
         this.bullets.push(obj)
+    } else if (obj instanceof AlienBullet) {
+        this.alienBullets.push(obj)
     }
 }
 

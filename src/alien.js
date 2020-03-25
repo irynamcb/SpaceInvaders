@@ -1,8 +1,8 @@
 const MovingObject = require("./moving_object.js");
 const Util = require("./util.js");
-const Ship = require("./ship.js");
 const AlienBullet = require("./alien_bullet.js");
 const Bullet = require("./bullet.js");
+const Ship = require("./ship.js");
 
 Util.inherits(MovingObject, Alien);
 
@@ -23,12 +23,15 @@ function Alien(options) {
 }
 
 Alien.prototype.collideWith = function (otherObject) {
+    // will need to change this to kill the ship
+
     if (otherObject instanceof Ship) {
-        otherObject.relocate();
+        this.game.remove(otherObject);
+        this.game.remove(this);
     } else if (otherObject instanceof Bullet) {
         this.game.remove(otherObject);
         this.game.remove(this);
-    }
+    } 
 }
 
 Alien.prototype.fireBullet = function () {
