@@ -10,14 +10,19 @@ const AlienBullet = require("./alien_bullet");
 function Game() {
     Game.DIM_X = 800;
     Game.DIM_Y = 800;
+    this.initializeLevel();
     
+}
+
+Game.prototype.initializeLevel = function () {
     this.bullets = [];
     this.aliens = [];
-    this.alienBullets=[];
+    this.alienBullets = [];
     this.ship = new Ship({ pos: this.shipPosition(), game: this })
     this.addAliens();
     this.alienBullet = 120;
 }
+
 
 Game.prototype.shipPosition = function () {
     let x = (Game.DIM_X/2);
@@ -104,8 +109,9 @@ Game.prototype.isOutOfBounds = function (pos) {
 Game.prototype.fireAlienBullets = function () {
     this.alienBullet -= 1;
     if (this.alienBullet === 0) {
-        this.aliens[0].fireBullet();
-        this.alienBullet = this.getRandomInt(200) + 100;
+        index = this.getRandomInt(this.aliens.length);
+        this.aliens[index].fireBullet();
+        this.alienBullet = this.getRandomInt(100) + 100;
     }
 }
 

@@ -4,7 +4,7 @@ const Util = require("./util.js");
 Util.inherits(MovingObject, Bullet);
 
 Bullet.COLOR = "red";
-Bullet.RADIUS = 2;
+Bullet.RADIUS = 4;
 
 function Bullet(options) {
 
