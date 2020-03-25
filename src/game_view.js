@@ -1,5 +1,3 @@
-const Game = require("./game.js");
-
 
 
 function GameView(game, ctx) {
@@ -13,7 +11,7 @@ GameView.prototype.start = function () {
 
     setInterval(function () {
         that.gameState.step();
-        that.gameState.draw(that.ctx);
+        that.gameState.draw(that.game, that.ctx);
     }, 20);
     this.bindKeyHandlers();
 }
@@ -32,6 +30,9 @@ GameView.prototype.bindKeyHandlers = function () {
     key('a', function () { GameView.prototype.left(ship) });
     key('d', function () { GameView.prototype.right(ship) });
     key('space', function () { ship.fireBullet() });
+    key('k', function () { 
+        // debugger
+        window.gv.game.initializeLevel(); window.gv.gameState = window.gv.game });
 }
 
 module.exports = GameView;

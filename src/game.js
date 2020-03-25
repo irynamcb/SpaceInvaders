@@ -4,12 +4,14 @@ const Ship = require("./ship.js");
 const Bullet = require("./bullet.js");
 const Alien = require("./alien.js");
 const AlienBullet = require("./alien_bullet");
+const GameOver = require("./game_over");
+
 
 
 
 function Game() {
-    Game.DIM_X = 800;
-    Game.DIM_Y = 800;
+    this.width = 800;
+    this.height = 800;
     this.initializeLevel();
     
 }
@@ -25,8 +27,8 @@ Game.prototype.initializeLevel = function () {
 
 
 Game.prototype.shipPosition = function () {
-    let x = (Game.DIM_X/2);
-    let y = (Game.DIM_Y - (Ship.RADIUS + 1));
+    let x = (this.width/2);
+    let y = (this.height - (Ship.RADIUS + 1));
     let pos = [x, y];
     return pos;
 }
@@ -45,8 +47,8 @@ Game.prototype.addAliens = function () {
     }
 }
 
-Game.prototype.draw = function (ctx) {
-    ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
+Game.prototype.draw = function (game, ctx) {
+    ctx.clearRect(0, 0, this.width, this.height);
     this.allObjects().forEach(obj => obj.draw(ctx));
 }
 
@@ -72,7 +74,7 @@ Game.prototype.step = function () {
     this.fireAlienBullets();
 
     if (this.aliens.length === 0) {
-        return "Game over"
+        window.gv.gameState = new GameOver(); 
     }
 
 };
@@ -107,7 +109,7 @@ Game.prototype.add = function (obj) {
 }
 
 Game.prototype.isOutOfBounds = function (pos) {
-    return (pos[0] < 0 || pos[1] < 0 || pos[0] > Game.DIM_X || pos[1] > Game.DIM_Y);
+    return (pos[0] < 0 || pos[1] < 0 || pos[0] > this.width || pos[1] > this.height);
 }
 
 Game.prototype.fireAlienBullets = function () {
