@@ -93,7 +93,18 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\nconst Util = __webpack_require__(/*! ./util.js */ \"./src/util.js\");\nconst Ship = __webpack_require__(/*! ./ship.js */ \"./src/ship.js\");\nconst Bullet = __webpack_require__(/*! ./bullet.js */ \"./src/bullet.js\");\n\nUtil.inherits(MovingObject, Alien);\n\nAlien.COLOR = \"blue\";\nAlien.RADIUS = 20;\n\nfunction Alien(options) {\n\n    let moOptions = {\n        pos: options.pos,\n        color: Alien.COLOR,\n        radius: Alien.RADIUS,\n        // vel: Util.randomVec(Math.random() * 10),\n        vel: [0, 0],\n        game: options.game\n    }\n    MovingObject.call(this, moOptions);\n}\n\nAlien.prototype.collideWith = function (otherObject) {\n    if (otherObject instanceof Ship) {\n        otherObject.relocate();\n    } else if (otherObject instanceof Bullet) {\n        this.game.remove(otherObject);\n        this.game.remove(this);\n    }\n}\n\n\nmodule.exports = Alien;\n\n//# sourceURL=webpack:///./src/alien.js?");
+eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\nconst Util = __webpack_require__(/*! ./util.js */ \"./src/util.js\");\nconst Ship = __webpack_require__(/*! ./ship.js */ \"./src/ship.js\");\nconst AlienBullet = __webpack_require__(/*! ./alien_bullet.js */ \"./src/alien_bullet.js\");\nconst Bullet = __webpack_require__(/*! ./bullet.js */ \"./src/bullet.js\");\n\nUtil.inherits(MovingObject, Alien);\n\nAlien.COLOR = \"blue\";\nAlien.RADIUS = 20;\n\nfunction Alien(options) {\n\n    let moOptions = {\n        pos: options.pos,\n        color: Alien.COLOR,\n        radius: Alien.RADIUS,\n        // vel: Util.randomVec(Math.random() * 10),\n        vel: [0, 0],\n        game: options.game\n    }\n    MovingObject.call(this, moOptions);\n}\n\nAlien.prototype.collideWith = function (otherObject) {\n    if (otherObject instanceof Ship) {\n        otherObject.relocate();\n    } else if (otherObject instanceof Bullet) {\n        this.game.remove(otherObject);\n        this.game.remove(this);\n    }\n}\n\nAlien.prototype.fireBullet = function () {\n    let newVel = [0, 10]\n    let bullet = new AlienBullet({ pos: [this.pos[0], this.pos[1]], vel: newVel, game: this.game });\n    this.game.add(bullet);\n}\n\nmodule.exports = Alien;\n\n//# sourceURL=webpack:///./src/alien.js?");
+
+/***/ }),
+
+/***/ "./src/alien_bullet.js":
+/*!*****************************!*\
+  !*** ./src/alien_bullet.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\nconst Util = __webpack_require__(/*! ./util.js */ \"./src/util.js\");\n\nUtil.inherits(MovingObject, AlienBullet);\n\nAlienBullet.COLOR = \"purple\";\nAlienBullet.RADIUS = 2;\n\nfunction AlienBullet(options) {\n\n    let moOptions = {\n        pos: options.pos,\n        color: Bullet.COLOR,\n        radius: Bullet.RADIUS,\n        vel: options.vel,\n        game: options.game\n    }\n    MovingObject.call(this, moOptions);\n\n}\n\nAlienBullet.prototype.checkBoundaryConditions = function () {\n    if (this.isOutOfBounds(this.pos)) {\n        this.game.remove(this);\n    }\n}\n\nAlienBullet.prototype.isWrappable = false;\n\nmodule.exports = AlienBullet;\n\n//# sourceURL=webpack:///./src/alien_bullet.js?");
 
 /***/ }),
 

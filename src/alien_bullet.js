@@ -12,7 +12,7 @@ function AlienBullet(options) {
         pos: options.pos,
         color: Bullet.COLOR,
         radius: Bullet.RADIUS,
-        vel: Util.randomVec(Math.random() * 10),
+        vel: options.vel,
         game: options.game
     }
     MovingObject.call(this, moOptions);
