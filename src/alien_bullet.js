@@ -1,18 +1,19 @@
 const MovingObject = require("./moving_object.js");
 const Util = require("./util.js");
 const Ship = require("./ship");
+const Bullet = require("./bullet");
 
 Util.inherits(MovingObject, AlienBullet);
 
 AlienBullet.COLOR = "purple";
-AlienBullet.RADIUS = 2;
+AlienBullet.RADIUS = 4;
 
 function AlienBullet(options) {
 
     let moOptions = {
         pos: options.pos,
-        color: Bullet.COLOR,
-        radius: Bullet.RADIUS,
+        color: AlienBullet.COLOR,
+        radius: AlienBullet.RADIUS,
         vel: options.vel,
         game: options.game
     }
@@ -28,7 +29,7 @@ AlienBullet.prototype.checkBoundaryConditions = function () {
 
 AlienBullet.prototype.collideWith = function (otherObject) {
     // will need to change this to kill the ship
-
+// debugger
     if (otherObject instanceof Ship) {
         this.game.remove(otherObject);
         this.game.remove(this);

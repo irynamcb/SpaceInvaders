@@ -16,6 +16,7 @@ function Game() {
     this.alienBullets=[];
     this.ship = new Ship({ pos: this.shipPosition(), game: this })
     this.addAliens();
+    this.alienBullet = 120;
 }
 
 Game.prototype.shipPosition = function () {
@@ -63,6 +64,7 @@ Game.prototype.checkCollisions = function () {
 Game.prototype.step = function () {
     this.moveObjects();
     this.checkCollisions();
+    this.fireAlienBullets();
 
 };
 
@@ -97,6 +99,18 @@ Game.prototype.add = function (obj) {
 
 Game.prototype.isOutOfBounds = function (pos) {
     return (pos[0] < 0 || pos[1] < 0 || pos[0] > Game.DIM_X || pos[1] > Game.DIM_Y);
+}
+
+Game.prototype.fireAlienBullets = function () {
+    this.alienBullet -= 1;
+    if (this.alienBullet === 0) {
+        this.aliens[0].fireBullet();
+        this.alienBullet = this.getRandomInt(200) + 100;
+    }
+}
+
+Game.prototype.getRandomInt = function (max) {
+    return Math.floor(Math.random() * Math.floor(max));
 }
 
 
