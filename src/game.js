@@ -37,8 +37,8 @@ Game.prototype.addAliens = function () {
     let alienX = 2 * Alien.RADIUS + 10;
     let alienY = 2 * Alien.RADIUS + 10;
 
-    for (let i = 0; i < 10; i++) {
-        for (let j = 0; j < 6; j++) {
+    for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 1; j++) {
             grid[i] = new Alien({ pos: [100 + i * alienX, 100 + j * alienY], game: this });
             this.add(grid[i]); 
         }   
@@ -70,6 +70,10 @@ Game.prototype.step = function () {
     this.moveObjects();
     this.checkCollisions();
     this.fireAlienBullets();
+
+    if (this.aliens.length === 0) {
+        return "Game over"
+    }
 
 };
 
@@ -109,9 +113,12 @@ Game.prototype.isOutOfBounds = function (pos) {
 Game.prototype.fireAlienBullets = function () {
     this.alienBullet -= 1;
     if (this.alienBullet === 0) {
-        index = this.getRandomInt(this.aliens.length);
-        this.aliens[index].fireBullet();
-        this.alienBullet = this.getRandomInt(100) + 100;
+
+        if (this.aliens.length !== 0) {
+            index = this.getRandomInt(this.aliens.length);
+            this.aliens[index].fireBullet();
+            this.alienBullet = this.getRandomInt(100) + 100;
+        } 
     }
 }
 
