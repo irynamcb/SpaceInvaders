@@ -8,7 +8,6 @@ const GameOver = require("./game_over");
 
 
 
-
 function Game() {
     this.width = 800;
     this.height = 800;
@@ -17,6 +16,7 @@ function Game() {
 }
 
 Game.prototype.initializeLevel = function () {
+ 
     this.bullets = [];
     this.aliens = [];
     this.alienBullets = [];
@@ -69,13 +69,14 @@ Game.prototype.checkCollisions = function () {
 };
 
 Game.prototype.step = function () {
+
     this.moveObjects();
     this.checkCollisions();
     this.fireAlienBullets();
 
     if (this.aliens.length === 0) {
         window.gv.gameState = new GameOver(); 
-    }
+    } 
 
 };
 

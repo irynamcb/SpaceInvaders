@@ -26,10 +26,10 @@ GameView.prototype.right = function (ship) {
 }
 
 GameView.prototype.bindKeyHandlers = function () {
-    const ship = this.game.ship;
-    key('a', function () { GameView.prototype.left(ship) });
-    key('d', function () { GameView.prototype.right(ship) });
-    key('space', function () { ship.fireBullet() });
+    const game = this.game;
+    key('a', function () { GameView.prototype.left(game.ship) });
+    key('d', function () { GameView.prototype.right(game.ship) });
+    key('space', function () { game.ship.fireBullet() });
     key('k', function () { 
         // debugger
         window.gv.game.initializeLevel(); 

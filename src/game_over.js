@@ -2,13 +2,12 @@ function GameOver() {
 
 }
 
-GameOver.prototype.step = function (game, dt) {
+GameOver.prototype.step = function (game) {
 
 };
 
 GameOver.prototype.draw = function (game, ctx) {
 
-    //  Clear the background.
     ctx.clearRect(0, 0, game.width, game.height);
 // debugger
     ctx.font = "30px Arial";
