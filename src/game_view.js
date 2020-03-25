@@ -32,7 +32,9 @@ GameView.prototype.bindKeyHandlers = function () {
     key('space', function () { ship.fireBullet() });
     key('k', function () { 
         // debugger
-        window.gv.game.initializeLevel(); window.gv.gameState = window.gv.game });
+        window.gv.game.initializeLevel(); 
+        window.gv.gameState = window.gv.game 
+    });
 }
 
 module.exports = GameView;
