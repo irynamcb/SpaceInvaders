@@ -1,4 +1,3 @@
-const MovingObject = require("./moving_object.js");
 const Ship = require("./ship.js");
 const Bullet = require("./bullet.js");
 const Alien = require("./alien.js");
@@ -9,7 +8,7 @@ const GameOver = require("./game_over");
 
 function Game() {
     this.width = 800;
-    this.height = 800;
+    this.height = 600;
     this.initializeLevel();
     
 }

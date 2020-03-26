@@ -1,8 +1,5 @@
-const MovingObject = require("./moving_object.js");
 const Game = require("./game.js");
 const GameView = require("./game_view.js");
-const StartGame = require("./start_game");
-const LevelStart = require("./level_start");
 const Starfield = require("./starfield");
 
 
