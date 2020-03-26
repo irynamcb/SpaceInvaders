@@ -54,15 +54,21 @@ Game.prototype.draw = function (game, ctx) {
 Game.prototype.moveObjects = function () {
     this.allObjects().forEach(obj => obj.move());
 
-    this.areAliensOutOfBounds();
+    if (this.areAliensOutOfBounds()) {
+        this.aliens.forEach(alien => {
+            alien.vel[0] = (alien.vel[0] * -1);
+            alien.move();
+        });
+    }
     
 }
 
 Game.prototype.areAliensOutOfBounds = function () {
     
     for (let i = 0; i < this.aliens.length; i++) {
-        if (this.this.isOutOfBounds(alien[i].pos)) return true;
+        if (this.isOutOfBounds(this.aliens[i].pos)) return true;
     } 
+    return false;
 }
 
 Game.prototype.checkCollisions = function () {
