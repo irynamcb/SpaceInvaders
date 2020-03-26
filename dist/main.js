@@ -214,7 +214,7 @@ eval("function Starfield() {\n    this.fps = 30;\n    this.canvas = null;\n    t
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\n\nfunction StartGame(game) {\n  \n}\n\nStartGame.prototype.enter = function (game) {\n\n\n};\n\nStartGame.prototype.step = function (game) {\n\n\n};\n\nStartGame.prototype.draw = function (game, ctx) {\n\n    ctx.clearRect(0, 0, game.width, game.height);\n    ctx.font = \"30px Arial\";\n    ctx.fillStyle = \"red\";\n    ctx.textBaseline = \"middle\";\n    ctx.textAlign = \"center\";\n    ctx.fillText(\"Space Invaders\", game.width / 2, game.height / 2 - 40);\n    ctx.font = \"16px Arial\";\n    ctx.fillText(\"Press 'K' to start a game.\", game.width / 2, game.height / 2);\n};\n\n\nmodule.exports = StartGame;\n\n//# sourceURL=webpack:///./src/start_game.js?");
+eval("\n\nfunction StartGame(game) {\n  \n}\n\nStartGame.prototype.enter = function (game) {\n\n\n};\n\nStartGame.prototype.step = function (game) {\n\n\n};\n\nStartGame.prototype.draw = function (game, ctx) {\n\n    ctx.clearRect(0, 0, game.width, game.height);\n    ctx.font = \"30px Arial\";\n    ctx.fillStyle = \"red\";\n    ctx.textBaseline = \"middle\";\n    ctx.textAlign = \"center\";\n    ctx.fillText(\"Space Destroyers\", game.width / 2, game.height / 2 - 40);\n    ctx.font = \"16px Arial\";\n    ctx.fillText(\"Press 'K' to start a game.\", game.width / 2, game.height / 2);\n};\n\n\nmodule.exports = StartGame;\n\n//# sourceURL=webpack:///./src/start_game.js?");
 
 /***/ }),
 
