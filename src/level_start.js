@@ -1,5 +1,3 @@
-const Game = require ("./game");
-
 
 function LevelStart() {
     this.countdownMessage = "3";
