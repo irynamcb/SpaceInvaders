@@ -39,6 +39,4 @@ AlienBullet.prototype.collideWith = function (otherObject) {
     } 
 }
 
-AlienBullet.prototype.isWrappable = false;
-
 module.exports = AlienBullet;

@@ -56,8 +56,4 @@ MovingObject.prototype.isCollidedWith = function (otherObject) {
 };
 
 
-MovingObject.prototype.isWrappable = true;
-// nothing should be wrappable 
-
-
 module.exports = MovingObject;
