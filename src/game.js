@@ -38,8 +38,8 @@ Game.prototype.addAliens = function () {
     let alienX = 2 * Alien.RADIUS + 10;
     let alienY = 2 * Alien.RADIUS + 10;
 
-    for (let i = 0; i < 5; i++) {
-        for (let j = 0; j < 1; j++) {
+    for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 5; j++) {
             grid[i] = new Alien({ pos: [100 + i * alienX, 100 + j * alienY], game: this });
             this.add(grid[i]); 
         }   
@@ -57,7 +57,9 @@ Game.prototype.moveObjects = function () {
     if (this.areAliensOutOfBounds()) {
         this.aliens.forEach(alien => {
             alien.vel[0] = (alien.vel[0] * -1);
+            alien.vel[1] += 40;
             alien.move();
+            alien.vel[1] = 0;
         });
     }
     
