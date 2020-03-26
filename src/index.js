@@ -2,7 +2,7 @@ const MovingObject = require("./moving_object.js");
 const Game = require("./game.js");
 const GameView = require("./game_view.js");
 const StartGame = require("./start_game");
-
+const LevelStart = require("./level_start");
 
 
 console.log("Webpack is working!");
@@ -15,10 +15,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
     window.ctx = ctx;
 
     
+    
+
     const g = new Game();
     const gv = new GameView(g, ctx);
     window.gv = gv;
     window.gv.gameState = new StartGame();;
+    window.gv.gameState = new LevelStart();
+  
     gv.start();
 
 

@@ -15,7 +15,6 @@ function Alien(options) {
         pos: options.pos,
         color: Alien.COLOR,
         radius: Alien.RADIUS,
-        // vel: Util.randomVec(Math.random() * 10),
         vel: [0, 0],
         game: options.game
     }

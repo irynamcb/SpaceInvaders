@@ -28,7 +28,7 @@ AlienBullet.prototype.checkBoundaryConditions = function () {
 }
 
 AlienBullet.prototype.collideWith = function (otherObject) {
-    // will need to change this to kill the ship
+    // need to change this to kill the ship
 // debugger
     if (otherObject instanceof Ship) {
         this.game.remove(otherObject);

@@ -1,35 +1,32 @@
-function LevelStart(level) {
+const Game = require ("./game");
+
+
+function LevelStart() {
     this.countdownMessage = "3";
+    this.countdown = 120;
 }
 
-LevelStart.prototype.step = function (game, dt) {
+LevelStart.prototype.step = function (game) {
 
-    //  Update the countdown.
-    if (this.countdown === undefined) {
-        this.countdown = 3; // countdown from 3 secs
-    }
-    this.countdown -= dt;
+    this.countdown -= 1;
 
-    if (this.countdown < 2) {
+    if (this.countdown <= 80) {
         this.countdownMessage = "2";
     }
-    if (this.countdown < 1) {
+    if (this.countdown <= 40) {
         this.countdownMessage = "1";
     }
     if (this.countdown <= 0) {
-        //  Move to the next level, popping this state.
-        game.moveToState(new PlayState(game.config, this.level));
+       this.countdownMessage = "0"
     }
 
 };
 
 LevelStart.prototype.draw = function (game, ctx) {
 
-   
     ctx.clearRect(0, 0, game.width, game.height);
-
     ctx.font = "36px Arial";
-    ctx.fillStyle = 'green';
+    ctx.fillStyle = 'red';
     ctx.textBaseline = "middle";
     ctx.textAlign = "center";
     ctx.font = "24px Arial";
