@@ -39,7 +39,7 @@ Game.prototype.addAliens = function () {
 
     for (let i = 0; i < 8; i++) {
         for (let j = 0; j < 5; j++) {
-            grid[i] = new Alien({ pos: [100 + i * alienX, 100 + j * alienY], game: this });
+            grid[i] = new Alien({ pos: [50 + i * alienX, 50 + j * alienY], game: this });
             this.add(grid[i]); 
         }   
     }

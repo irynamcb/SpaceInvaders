@@ -25,6 +25,4 @@ Bullet.prototype.checkBoundaryConditions = function () {
     }
 }
 
-Bullet.prototype.isWrappable = false;
-
 module.exports = Bullet;
