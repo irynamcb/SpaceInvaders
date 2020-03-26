@@ -1,7 +1,7 @@
-// const LevelStart = require("./level_start");
 
-function StartGame() {
-// this.levelStart = new LevelStart();
+
+function StartGame(game) {
+  
 }
 
 StartGame.prototype.enter = function (game) {

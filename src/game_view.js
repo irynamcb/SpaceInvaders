@@ -1,9 +1,12 @@
+const LevelStart = require("./level_start");
+const StartGame = require("./start_game");
 
 
 function GameView(game, ctx) {
+
     this.game = game;
     this.ctx = ctx;
-    this.gameState = game;
+    this.gameState = new StartGame();
 }
 
 GameView.prototype.start = function () {
@@ -32,8 +35,7 @@ GameView.prototype.bindKeyHandlers = function () {
     key('space', function () { game.ship.fireBullet() });
     key('k', function () { 
         // debugger
-        window.gv.game.initializeLevel();
-        window.gv.gameState = window.gv.game 
+        window.gv.gameState = new LevelStart();
     });
 }
 

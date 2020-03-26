@@ -6,7 +6,7 @@ function LevelStart() {
     this.countdown = 120;
 }
 
-LevelStart.prototype.step = function (game) {
+LevelStart.prototype.step = function () {
 
     this.countdown -= 1;
 
@@ -17,7 +17,8 @@ LevelStart.prototype.step = function (game) {
         this.countdownMessage = "1";
     }
     if (this.countdown <= 0) {
-       this.countdownMessage = "0"
+       window.gv.game.initializeLevel();
+       window.gv.gameState = window.gv.game;
     }
 
 };
