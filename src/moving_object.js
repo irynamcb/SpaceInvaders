@@ -1,3 +1,5 @@
+import {image} from '../images/image';
+
 function MovingObject(options) {
 
     this.pos = options.pos;
@@ -5,23 +7,13 @@ function MovingObject(options) {
     this.radius = options.radius;
     this.color = options.color;
     this.game = options.game;
+    this.image = options.image;
 
 };
 
 MovingObject.prototype.draw = function (ctx) {
-    ctx.fillStyle = this.color;
-    ctx.beginPath();
-
-    ctx.arc(
-        this.pos[0],
-        this.pos[1],
-        this.radius,
-        0,
-        2 * Math.PI,
-        true
-    );
-
-    ctx.fill();
+   
+    ctx.drawImage(image, this.pos[0], this.pos[1], 50, 30);
 };
 
 MovingObject.prototype.move = function () {

@@ -13,10 +13,11 @@ function Alien(options) {
 
     let moOptions = {
         pos: options.pos,
+        image: options.image,
         color: Alien.COLOR,
         radius: Alien.RADIUS,
         vel: [1, 0],
-        game: options.game
+        game: options.game,
     }
     MovingObject.call(this, moOptions);
 }

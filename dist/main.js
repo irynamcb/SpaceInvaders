@@ -86,6 +86,29 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "../../../../usr/local/lib/node_modules/webpack/buildin/harmony-module.js":
+/*!*******************************************!*\
+  !*** (webpack)/buildin/harmony-module.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = function(originalModule) {\n\tif (!originalModule.webpackPolyfill) {\n\t\tvar module = Object.create(originalModule);\n\t\t// module.parent = undefined by default\n\t\tif (!module.children) module.children = [];\n\t\tObject.defineProperty(module, \"loaded\", {\n\t\t\tenumerable: true,\n\t\t\tget: function() {\n\t\t\t\treturn module.l;\n\t\t\t}\n\t\t});\n\t\tObject.defineProperty(module, \"id\", {\n\t\t\tenumerable: true,\n\t\t\tget: function() {\n\t\t\t\treturn module.i;\n\t\t\t}\n\t\t});\n\t\tObject.defineProperty(module, \"exports\", {\n\t\t\tenumerable: true\n\t\t});\n\t\tmodule.webpackPolyfill = 1;\n\t}\n\treturn module;\n};\n\n\n//# sourceURL=webpack:///(webpack)/buildin/harmony-module.js?");
+
+/***/ }),
+
+/***/ "./images/image.js":
+/*!*************************!*\
+  !*** ./images/image.js ***!
+  \*************************/
+/*! exports provided: image, alienImage, shipImage, bulletImage, alienBulletImage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"image\", function() { return image; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"alienImage\", function() { return alienImage; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"shipImage\", function() { return shipImage; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"bulletImage\", function() { return bulletImage; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"alienBulletImage\", function() { return alienBulletImage; });\nconst image = new Image();\nimage.src = '';\n\nconst alienImage = new Image();\nalienImage.src = './starship1_3.png';\n\nconst shipImage = new Image();\nshipImage.src = './starship17.png';\n\n\nconst bulletImage = new Image();\nbulletImage.src = '';\n\nconst alienBulletImage = new Image();\nalienBulletImage.src = '';\n\n\n//# sourceURL=webpack:///./images/image.js?");
+
+/***/ }),
+
 /***/ "./src/alien.js":
 /*!**********************!*\
   !*** ./src/alien.js ***!
@@ -93,7 +116,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\nconst Util = __webpack_require__(/*! ./util.js */ \"./src/util.js\");\nconst AlienBullet = __webpack_require__(/*! ./alien_bullet.js */ \"./src/alien_bullet.js\");\nconst Bullet = __webpack_require__(/*! ./bullet.js */ \"./src/bullet.js\");\nconst Ship = __webpack_require__(/*! ./ship.js */ \"./src/ship.js\");\n\nUtil.inherits(MovingObject, Alien);\n\nAlien.COLOR = \"blue\";\nAlien.RADIUS = 20;\n\nfunction Alien(options) {\n\n    let moOptions = {\n        pos: options.pos,\n        color: Alien.COLOR,\n        radius: Alien.RADIUS,\n        vel: [1, 0],\n        game: options.game\n    }\n    MovingObject.call(this, moOptions);\n}\n\nAlien.prototype.collideWith = function (otherObject) {\n    // will need to change this to kill the ship\n\n    if (otherObject instanceof Ship) {\n        this.game.remove(otherObject);\n        this.game.remove(this);\n    } else if (otherObject instanceof Bullet) {\n        this.game.remove(otherObject);\n        this.game.remove(this);\n    } \n}\n\nAlien.prototype.fireBullet = function () {\n    let newVel = [0, 10]\n    let bullet = new AlienBullet({ pos: [this.pos[0], this.pos[1]], vel: newVel, game: this.game });\n    this.game.add(bullet);\n}\n\n\n\nmodule.exports = Alien;\n\n//# sourceURL=webpack:///./src/alien.js?");
+eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\nconst Util = __webpack_require__(/*! ./util.js */ \"./src/util.js\");\nconst AlienBullet = __webpack_require__(/*! ./alien_bullet.js */ \"./src/alien_bullet.js\");\nconst Bullet = __webpack_require__(/*! ./bullet.js */ \"./src/bullet.js\");\nconst Ship = __webpack_require__(/*! ./ship.js */ \"./src/ship.js\");\n\nUtil.inherits(MovingObject, Alien);\n\nAlien.COLOR = \"blue\";\nAlien.RADIUS = 20;\n\nfunction Alien(options) {\n\n    let moOptions = {\n        pos: options.pos,\n        image: options.image,\n        color: Alien.COLOR,\n        radius: Alien.RADIUS,\n        vel: [1, 0],\n        game: options.game,\n    }\n    MovingObject.call(this, moOptions);\n}\n\nAlien.prototype.collideWith = function (otherObject) {\n    // will need to change this to kill the ship\n\n    if (otherObject instanceof Ship) {\n        this.game.remove(otherObject);\n        this.game.remove(this);\n    } else if (otherObject instanceof Bullet) {\n        this.game.remove(otherObject);\n        this.game.remove(this);\n    } \n}\n\nAlien.prototype.fireBullet = function () {\n    let newVel = [0, 10]\n    let bullet = new AlienBullet({ pos: [this.pos[0], this.pos[1]], vel: newVel, game: this.game });\n    this.game.add(bullet);\n}\n\n\n\nmodule.exports = Alien;\n\n//# sourceURL=webpack:///./src/alien.js?");
 
 /***/ }),
 
@@ -178,10 +201,11 @@ eval("\nfunction LevelStart() {\n    this.countdownMessage = \"3\";\n    this.co
 /*!******************************!*\
   !*** ./src/moving_object.js ***!
   \******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("function MovingObject(options) {\n\n    this.pos = options.pos;\n    this.vel = options.vel;\n    this.radius = options.radius;\n    this.color = options.color;\n    this.game = options.game;\n\n};\n\nMovingObject.prototype.draw = function (ctx) {\n    ctx.fillStyle = this.color;\n    ctx.beginPath();\n\n    ctx.arc(\n        this.pos[0],\n        this.pos[1],\n        this.radius,\n        0,\n        2 * Math.PI,\n        true\n    );\n\n    ctx.fill();\n};\n\nMovingObject.prototype.move = function () {\n    //console.log(this.pos[0], this.pos[1], this)\n    let x = (this.pos[0] += this.vel[0]);\n    let y = (this.pos[1] += this.vel[1]);\n    this.pos = [x, y];\n  \n    this.checkBoundaryConditions();\n\n};\n\nMovingObject.prototype.checkBoundaryConditions = function () {\n\n}\n\nMovingObject.prototype.isOutOfBounds = function (pos) {\n    return this.game.isOutOfBounds(pos);\n}\n\n\nMovingObject.prototype.collideWith = function (otherObject) {\n\n};\n\nMovingObject.prototype.isCollidedWith = function (otherObject) {\n\n    let distance = Math.sqrt(Math.pow((this.pos[0] - otherObject.pos[0]), 2) + Math.pow((this.pos[1] - otherObject.pos[1]), 2));\n\n    return (distance < (this.radius + otherObject.radius));\n\n};\n\n\nmodule.exports = MovingObject;\n\n//# sourceURL=webpack:///./src/moving_object.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var _images_image__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../images/image */ \"./images/image.js\");\n\n\nfunction MovingObject(options) {\n\n    this.pos = options.pos;\n    this.vel = options.vel;\n    this.radius = options.radius;\n    this.color = options.color;\n    this.game = options.game;\n    this.image = options.image;\n\n};\n\nMovingObject.prototype.draw = function (ctx) {\n   \n    ctx.drawImage(_images_image__WEBPACK_IMPORTED_MODULE_0__[\"image\"], this.pos[0], this.pos[1], 50, 30);\n};\n\nMovingObject.prototype.move = function () {\n    //console.log(this.pos[0], this.pos[1], this)\n    let x = (this.pos[0] += this.vel[0]);\n    let y = (this.pos[1] += this.vel[1]);\n    this.pos = [x, y];\n  \n    this.checkBoundaryConditions();\n\n};\n\nMovingObject.prototype.checkBoundaryConditions = function () {\n\n}\n\nMovingObject.prototype.isOutOfBounds = function (pos) {\n    return this.game.isOutOfBounds(pos);\n}\n\n\nMovingObject.prototype.collideWith = function (otherObject) {\n\n};\n\nMovingObject.prototype.isCollidedWith = function (otherObject) {\n\n    let distance = Math.sqrt(Math.pow((this.pos[0] - otherObject.pos[0]), 2) + Math.pow((this.pos[1] - otherObject.pos[1]), 2));\n\n    return (distance < (this.radius + otherObject.radius));\n\n};\n\n\nmodule.exports = MovingObject;\n/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../usr/local/lib/node_modules/webpack/buildin/harmony-module.js */ \"../../../../usr/local/lib/node_modules/webpack/buildin/harmony-module.js\")(module)))\n\n//# sourceURL=webpack:///./src/moving_object.js?");
 
 /***/ }),
 
