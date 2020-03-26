@@ -32,7 +32,7 @@ iframe:not(.auto-link) { display:none ! important; visibility:hidden ! important
 .message h1 {
 	font-size: 22px;
 	font-family: Arial, Helvetica, sans-serif;
-	color: black;
+	color: white;
 	margin-bottom: 10px;
 }
 
@@ -54,6 +54,13 @@ iframe:not(.auto-link) { display:none ! important; visibility:hidden ! important
   text-decoration: underline;
 }
 
-
+#starfield {
+	width:100%;
+	height:100%;
+	z-index: -1;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
 
 

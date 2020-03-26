@@ -53,6 +53,16 @@ Game.prototype.draw = function (game, ctx) {
 
 Game.prototype.moveObjects = function () {
     this.allObjects().forEach(obj => obj.move());
+
+    this.areAliensOutOfBounds();
+    
+}
+
+Game.prototype.areAliensOutOfBounds = function () {
+    
+    for (let i = 0; i < this.aliens.length; i++) {
+        if (this.this.isOutOfBounds(alien[i].pos)) return true;
+    } 
 }
 
 Game.prototype.checkCollisions = function () {
@@ -70,8 +80,8 @@ Game.prototype.checkCollisions = function () {
 Game.prototype.step = function () {
 
     this.moveObjects();
-    this.checkCollisions();
     this.fireAlienBullets();
+    this.checkCollisions();
 
     if (this.aliens.length === 0) {
         window.gv.gameState = new GameOver(); 

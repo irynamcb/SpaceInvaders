@@ -15,7 +15,7 @@ function Alien(options) {
         pos: options.pos,
         color: Alien.COLOR,
         radius: Alien.RADIUS,
-        vel: [0, 0],
+        vel: [1, 0],
         game: options.game
     }
     MovingObject.call(this, moOptions);
@@ -38,5 +38,7 @@ Alien.prototype.fireBullet = function () {
     let bullet = new AlienBullet({ pos: [this.pos[0], this.pos[1]], vel: newVel, game: this.game });
     this.game.add(bullet);
 }
+
+
 
 module.exports = Alien;
