@@ -11,9 +11,42 @@ a object,:link object,:visited object
 { border:0 }
 address,abbr { font-style:normal }
 iframe:not(.auto-link) { display:none ! important; visibility:hidden ! important; margin-left: -10000px ! important  }
+
+
+.main {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: flex-start;
+	margin: 10px;
+}
+
+.message {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin: 10px;
+}
+
+.message h1 {
+	font-size: 22px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: black;
+	margin-bottom: 10px;
+}
+
+.links {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
 .links a {
   color: #0088cc;
   text-decoration: none;
+  font-size: 18px;
+  margin-right: 10px;
 }
 
 .links a:hover, a:focus {
