@@ -1,5 +1,3 @@
-
-
 function MovingObject(options) {
 
     this.pos = options.pos;
@@ -12,7 +10,7 @@ function MovingObject(options) {
 };
 
 MovingObject.prototype.draw = function (ctx) {
-    
+
     ctx.drawImage(this.image, this.pos[0], this.pos[1], 50, 30);
 };
 
@@ -39,13 +37,26 @@ MovingObject.prototype.collideWith = function (otherObject) {
 
 };
 
+MovingObject.prototype.getCenter = function () {
+
+    let x = this.pos[0] + this.image.width / 2
+    let y = this.pos[1] + this.image.height / 2
+
+    return [x, y]
+
+};
+
 MovingObject.prototype.isCollidedWith = function (otherObject) {
 
-    let distance = Math.sqrt(Math.pow((this.pos[0] - otherObject.pos[0]), 2) + Math.pow((this.pos[1] - otherObject.pos[1]), 2));
+    let pos = this.getCenter();
+    let otherPos = otherObject.getCenter();
+
+    let distance = Math.sqrt(Math.pow((pos[0] - otherPos[0]), 2) + Math.pow((pos[1] - otherPos[1]), 2));
 
     return (distance < (this.radius + otherObject.radius));
 
 };
+
 
 
 module.exports = MovingObject;
