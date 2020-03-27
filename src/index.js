@@ -21,13 +21,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const g = new Game();
     const gv = new GameView(g, ctx);
     window.gv = gv;
-
-    const keyUp = document.addEventListener("keyUp", function keyup(e) {
-        let keycode = e.which || window.event.keycode;
-        gv.keyUp(keycode);
-    })
-
     gv.start();
+
+    // not sure if this is a place to put it
+    document.addEventListener("keyup", function (e) {
+        let keycode = e.which || window.event.keycode;
+        if (keycode === 65 || keycode === 68 || keycode === 32) {
+            gv.stopShip(g.ship);
+        }
+    })
 
 
 
