@@ -9,12 +9,13 @@ const GameOver = require("./game_over");
 function Game() {
     this.width = 800;
     this.height = 600;
-    this.initializeLevel();
-    
+    this.gameOver = true;
+    this.initializeLevel(); 
 }
 
 Game.prototype.initializeLevel = function () {
- 
+
+    this.gameOver = false;
     this.bullets = [];
     this.aliens = [];
     this.alienBullets = [];
@@ -26,7 +27,7 @@ Game.prototype.initializeLevel = function () {
 
 Game.prototype.shipPosition = function () {
     let x = (this.width/2);
-    let y = this.height - Ship.height - 10;
+    let y = this.height - Ship.HEIGHT - 1;
     let pos = [x, y];
     return pos;
 }
@@ -91,7 +92,7 @@ Game.prototype.step = function () {
     this.fireAlienBullets();
     this.checkCollisions();
 
-    if (this.aliens.length === 0) {
+    if (this.aliens.length === 0 || this.gameOver) {
         window.gv.gameState = new GameOver(); 
     } 
 
@@ -105,7 +106,7 @@ Game.prototype.remove = function (obj) {
         this.bullets.splice(this.bullets.indexOf(obj), 1)
     } else if (obj instanceof AlienBullet) {
         this.alienBullets.splice(this.alienBullets.indexOf(obj), 1)
-    }
+    } 
 }
 
 

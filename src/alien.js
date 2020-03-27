@@ -33,8 +33,8 @@ Alien.prototype.collideWith = function (otherObject) {
     // will need to change this to kill the ship
 
     if (otherObject instanceof Ship) {
-        this.game.remove(otherObject);
         this.game.remove(this);
+        this.game.gameOver = true;
     } else if (otherObject instanceof Bullet) {
         this.game.remove(otherObject);
         this.game.remove(this);
