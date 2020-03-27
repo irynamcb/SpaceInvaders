@@ -3,6 +3,7 @@ const Util = require("./util.js");
 const Bullet = require("./bullet.js");
 
 
+
 Util.inherits(MovingObject, Ship);
 
 Ship.COLOR = "green";
@@ -11,8 +12,12 @@ Ship.MAX_IMPULSE = 5;
 
 function Ship(options) {
 
+    const shipImage = new Image();
+    shipImage.src = '../images/starship1_3.png';
+
     let moOptions = {
         pos: options.pos,
+        image: shipImage,
         color: Ship.COLOR,
         radius: Ship.RADIUS,
         vel: [0, 0],

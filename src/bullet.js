@@ -1,6 +1,7 @@
 const MovingObject = require("./moving_object.js");
 const Util = require("./util.js");
 
+
 Util.inherits(MovingObject, Bullet);
 
 Bullet.COLOR = "red";
@@ -8,8 +9,12 @@ Bullet.RADIUS = 4;
 
 function Bullet(options) {
 
+    const bulletImage = new Image();
+    bulletImage.src = '../images/starship17.png';
+
     let moOptions = {
         pos: options.pos,
+        image: bulletImage,
         color: Bullet.COLOR,
         radius: Bullet.RADIUS,
         vel: options.vel,

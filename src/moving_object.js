@@ -1,19 +1,19 @@
-import {image} from '../images/image';
+
 
 function MovingObject(options) {
 
     this.pos = options.pos;
+    this.image = options.image;
     this.vel = options.vel;
     this.radius = options.radius;
     this.color = options.color;
     this.game = options.game;
-    this.image = options.image;
 
 };
 
 MovingObject.prototype.draw = function (ctx) {
-   
-    ctx.drawImage(image, this.pos[0], this.pos[1], 50, 30);
+    
+    ctx.drawImage(this.image, this.pos[0], this.pos[1], 50, 30);
 };
 
 MovingObject.prototype.move = function () {
