@@ -6,7 +6,6 @@ const Bullet = require("./bullet.js");
 
 Util.inherits(MovingObject, Ship);
 
-Ship.COLOR = "green";
 Ship.RADIUS = 15;
 Ship.MAX_IMPULSE = 5;
 Ship.HEIGHT = 30;
@@ -21,7 +20,6 @@ function Ship(options) {
         image: shipImage,
         width: 50,
         height: Ship.HEIGHT,
-        color: Ship.COLOR,
         radius: Ship.RADIUS,
         vel: [0, 0],
         game: options.game

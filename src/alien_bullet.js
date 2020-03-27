@@ -5,7 +5,6 @@ const Bullet = require("./bullet");
 
 Util.inherits(MovingObject, AlienBullet);
 
-AlienBullet.COLOR = "purple";
 AlienBullet.RADIUS = 4;
 
 function AlienBullet(options) {
@@ -18,7 +17,6 @@ function AlienBullet(options) {
         image: alienBulletImage,
         width: 50,
         height: 30,
-        color: AlienBullet.COLOR,
         radius: AlienBullet.RADIUS,
         vel: options.vel,
         game: options.game

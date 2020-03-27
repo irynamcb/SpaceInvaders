@@ -7,7 +7,6 @@ const Ship = require("./ship.js");
 
 Util.inherits(MovingObject, Alien);
 
-Alien.COLOR = "blue";
 Alien.RADIUS = 20;
 
 function Alien(options) {
@@ -20,7 +19,6 @@ function Alien(options) {
         image: alienImage,
         width: 50,
         height: 30,
-        color: Alien.COLOR,
         radius: Alien.RADIUS,
         vel: [1, 0],
         game: options.game,

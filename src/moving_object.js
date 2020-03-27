@@ -6,7 +6,6 @@ function MovingObject(options) {
     this.height = options.height;
     this.vel = options.vel;
     this.radius = options.radius;
-    this.color = options.color;
     this.game = options.game;
 
 };
