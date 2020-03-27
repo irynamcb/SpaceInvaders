@@ -2,8 +2,8 @@ function MovingObject(options) {
 
     this.pos = options.pos;
     this.image = options.image;
-    this.width = 100;
-    this.height = 30;
+    this.width = options.width;
+    this.height = options.height;
     this.vel = options.vel;
     this.radius = options.radius;
     this.color = options.color;
@@ -36,7 +36,7 @@ MovingObject.prototype.isOutOfBounds = function () {
     let dx = this.width / 2;
     let dy = this.height / 2;
   
-    return (pos[0] - dx < 0 || pos[1] - dy < 0 || pos[0] + dx > this.width || pos[1] + dy > this.height);
+    return (pos[0] - dx < 0 || pos[1] - dy < 0 || pos[0] + dx > this.game.width || pos[1] + dy > this.game.height);
     
 }
 
@@ -46,7 +46,7 @@ MovingObject.prototype.isOffScreen = function () {
     let dx = this.width / 2;
     let dy = this.height / 2;
 
-    return (pos[0] + dx < 0 || pos[1] + dy < 0 || pos[0] - dx > this.width || pos[1] - dy > this.height);
+    return (pos[0] + dx < 0 || pos[1] + dy < 0 || pos[0] - dx > this.game.width || pos[1] - dy > this.game.height);
 
 }
 

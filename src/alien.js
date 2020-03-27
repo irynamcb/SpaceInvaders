@@ -18,6 +18,8 @@ function Alien(options) {
     let moOptions = {
         pos: options.pos,
         image: alienImage,
+        width: 50,
+        height: 30,
         color: Alien.COLOR,
         radius: Alien.RADIUS,
         vel: [1, 0],

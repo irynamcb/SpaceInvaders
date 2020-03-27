@@ -16,6 +16,8 @@ function AlienBullet(options) {
     let moOptions = {
         pos: options.pos,
         image: alienBulletImage,
+        width: 50,
+        height: 30,
         color: AlienBullet.COLOR,
         radius: AlienBullet.RADIUS,
         vel: options.vel,
@@ -26,6 +28,7 @@ function AlienBullet(options) {
 }
 
 AlienBullet.prototype.checkBoundaryConditions = function () {
+
     if (this.isOffScreen()) {
         this.game.remove(this);
     }

@@ -18,6 +18,8 @@ function Ship(options) {
     let moOptions = {
         pos: options.pos,
         image: shipImage,
+        width: 50,
+        height: 30,
         color: Ship.COLOR,
         radius: Ship.RADIUS,
         vel: [0, 0],

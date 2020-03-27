@@ -15,6 +15,8 @@ function Bullet(options) {
     let moOptions = {
         pos: options.pos,
         image: bulletImage,
+        width: 50,
+        height: 30,
         color: Bullet.COLOR,
         radius: Bullet.RADIUS,
         vel: options.vel,

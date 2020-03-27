@@ -26,7 +26,7 @@ Game.prototype.initializeLevel = function () {
 
 Game.prototype.shipPosition = function () {
     let x = (this.width/2);
-    let y = (this.height - (Ship.RADIUS + 1));
+    let y = this.height - Ship.height - 10;
     let pos = [x, y];
     return pos;
 }
@@ -54,6 +54,7 @@ Game.prototype.moveObjects = function () {
     this.allObjects().forEach(obj => obj.move());
 
     if (this.areAliensOutOfBounds()) {
+        
         this.aliens.forEach(alien => {
             alien.vel[0] = (alien.vel[0] * -1);
             alien.vel[1] += 30;
