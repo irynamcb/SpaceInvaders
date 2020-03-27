@@ -28,7 +28,8 @@ function Ship(options) {
 }
 
 Ship.prototype.checkBoundaryConditions = function () {
-    if (this.isOutOfBounds(this.pos)) {
+    if (this.isOutOfBounds()) {
+        debugger
         let x = (this.pos[0] -= this.vel[0]);
         let y = (this.pos[1] -= this.vel[1]);
         this.pos = [x, y];

@@ -2,6 +2,8 @@ function MovingObject(options) {
 
     this.pos = options.pos;
     this.image = options.image;
+    this.width = 100;
+    this.height = 30;
     this.vel = options.vel;
     this.radius = options.radius;
     this.color = options.color;
@@ -11,7 +13,7 @@ function MovingObject(options) {
 
 MovingObject.prototype.draw = function (ctx) {
 
-    ctx.drawImage(this.image, this.pos[0], this.pos[1], 50, 30);
+    ctx.drawImage(this.image, this.pos[0], this.pos[1], this.width, this.height);
 };
 
 MovingObject.prototype.move = function () {
@@ -28,9 +30,26 @@ MovingObject.prototype.checkBoundaryConditions = function () {
 
 }
 
-MovingObject.prototype.isOutOfBounds = function (pos) {
-    return this.game.isOutOfBounds(pos);
+MovingObject.prototype.isOutOfBounds = function () {
+
+    let pos = this.getCenter();
+    let dx = this.width / 2;
+    let dy = this.height / 2;
+  
+    return (pos[0] - dx < 0 || pos[1] - dy < 0 || pos[0] + dx > this.width || pos[1] + dy > this.height);
+    
 }
+
+MovingObject.prototype.isOffScreen = function () {
+
+    let pos = this.getCenter();
+    let dx = this.width / 2;
+    let dy = this.height / 2;
+
+    return (pos[0] + dx < 0 || pos[1] + dy < 0 || pos[0] - dx > this.width || pos[1] - dy > this.height);
+
+}
+
 
 
 MovingObject.prototype.collideWith = function (otherObject) {
@@ -38,10 +57,10 @@ MovingObject.prototype.collideWith = function (otherObject) {
 };
 
 MovingObject.prototype.getCenter = function () {
-
-    let x = this.pos[0] + this.image.width / 2
-    let y = this.pos[1] + this.image.height / 2
-
+ 
+    let x = this.pos[0] + this.width / 2
+    let y = this.pos[1] + this.height / 2
+// debugger
     return [x, y]
 
 };

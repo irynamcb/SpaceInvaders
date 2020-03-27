@@ -67,7 +67,7 @@ Game.prototype.moveObjects = function () {
 Game.prototype.areAliensOutOfBounds = function () {
     
     for (let i = 0; i < this.aliens.length; i++) {
-        if (this.isOutOfBounds(this.aliens[i].pos)) return true;
+        if (this.aliens[i].isOutOfBounds()) return true;
     } 
     return false;
 }
@@ -123,10 +123,6 @@ Game.prototype.add = function (obj) {
     } else if (obj instanceof AlienBullet) {
         this.alienBullets.push(obj)
     }
-}
-
-Game.prototype.isOutOfBounds = function (pos) {
-    return (pos[0] < 0 || pos[1] < 0 || pos[0] > this.width || pos[1] > this.height);
 }
 
 Game.prototype.fireAlienBullets = function () {

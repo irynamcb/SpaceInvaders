@@ -26,7 +26,7 @@ function AlienBullet(options) {
 }
 
 AlienBullet.prototype.checkBoundaryConditions = function () {
-    if (this.isOutOfBounds(this.pos)) {
+    if (this.isOffScreen()) {
         this.game.remove(this);
     }
 }
