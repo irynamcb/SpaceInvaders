@@ -10,13 +10,13 @@ AlienBullet.RADIUS = 4;
 function AlienBullet(options) {
 
     const alienBulletImage = new Image();
-    alienBulletImage.src = '../images/starship16.png';
+    alienBulletImage.src = '../images/13.png';
 
     let moOptions = {
         pos: options.pos,
         image: alienBulletImage,
-        width: 50,
-        height: 30,
+        width: 10,
+        height: 50,
         radius: AlienBullet.RADIUS,
         vel: options.vel,
         game: options.game

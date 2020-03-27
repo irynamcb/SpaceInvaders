@@ -12,7 +12,7 @@ Alien.RADIUS = 20;
 function Alien(options) {
 
     const alienImage = new Image();
-    alienImage.src = '../images/starship14_4.png';
+    alienImage.src = '../images/starship1_3.png';
 
     let moOptions = {
         pos: options.pos,

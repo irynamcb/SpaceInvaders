@@ -9,13 +9,13 @@ Bullet.RADIUS = 4;
 function Bullet(options) {
 
     const bulletImage = new Image();
-    bulletImage.src = '../images/starship17.png';
+    bulletImage.src = '../images/11.png';
 
     let moOptions = {
         pos: options.pos,
         image: bulletImage,
-        width: 50,
-        height: 30,
+        width: 10,
+        height: 50,
         radius: Bullet.RADIUS,
         vel: options.vel,
         game: options.game
