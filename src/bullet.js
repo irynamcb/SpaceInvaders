@@ -15,7 +15,7 @@ function Bullet(options) {
         pos: options.pos,
         image: bulletImage,
         width: 10,
-        height: 50,
+        height: 26,
         radius: Bullet.RADIUS,
         vel: options.vel,
         game: options.game

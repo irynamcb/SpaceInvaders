@@ -8,7 +8,7 @@ Util.inherits(MovingObject, Ship);
 
 Ship.RADIUS = 15;
 Ship.MAX_IMPULSE = 5;
-Ship.HEIGHT = 30;
+Ship.HEIGHT = 40;
 
 function Ship(options) {
 

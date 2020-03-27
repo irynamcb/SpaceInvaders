@@ -29,7 +29,7 @@ LevelStart.prototype.draw = function (game, ctx) {
     ctx.textBaseline = "middle";
     ctx.textAlign = "center";
     ctx.font = "24px Arial";
-    ctx.fillText("Ready in " + this.countdownMessage, game.width / 2, game.height / 2 + 36);
+    ctx.fillText("Ready in " + this.countdownMessage, game.width / 2, game.height / 2 );
     return;
 };
 

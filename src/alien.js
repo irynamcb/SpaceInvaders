@@ -12,13 +12,13 @@ Alien.RADIUS = 20;
 function Alien(options) {
 
     const alienImage = new Image();
-    alienImage.src = '../images/starship1_3.png';
+    alienImage.src = '../images/starship8_3.png';
 
     let moOptions = {
         pos: options.pos,
         image: alienImage,
-        width: 50,
-        height: 30,
+        width: 40,
+        height: 34,
         radius: Alien.RADIUS,
         vel: [1, 0],
         game: options.game,

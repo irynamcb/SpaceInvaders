@@ -16,7 +16,7 @@ function AlienBullet(options) {
         pos: options.pos,
         image: alienBulletImage,
         width: 10,
-        height: 50,
+        height: 26,
         radius: AlienBullet.RADIUS,
         vel: options.vel,
         game: options.game

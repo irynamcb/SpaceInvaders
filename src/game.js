@@ -35,8 +35,8 @@ Game.prototype.shipPosition = function () {
 Game.prototype.addAliens = function () {
 
     let grid = [];
-    let alienX = 2 * Alien.RADIUS + 10;
-    let alienY = 2 * Alien.RADIUS + 10;
+    let alienX = 2 * Alien.RADIUS + 3;
+    let alienY = 2 * Alien.RADIUS + 3;
 
     for (let i = 0; i < 6; i++) {
         for (let j = 0; j < 4; j++) {

@@ -50,7 +50,6 @@ MovingObject.prototype.isOffScreen = function () {
 }
 
 
-
 MovingObject.prototype.collideWith = function (otherObject) {
 
 };
