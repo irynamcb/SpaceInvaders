@@ -28,6 +28,10 @@ GameView.prototype.right = function (ship) {
     ship.power([1, 0]);
 }
 
+GameView.prototype.stopShip = function (ship) {
+    ship.vel = [0, 0];
+}
+
 GameView.prototype.bindKeyHandlers = function () {
     const game = this.game;
     key('a', function () { GameView.prototype.left(game.ship) });
