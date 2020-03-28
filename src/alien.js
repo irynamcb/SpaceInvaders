@@ -20,7 +20,7 @@ function Alien(options) {
         width: 40,
         height: 34,
         radius: Alien.RADIUS,
-        vel: [1, 0],
+        vel: [3, 0],
         game: options.game,
     }
     MovingObject.call(this, moOptions);
