@@ -74,6 +74,10 @@ MovingObject.prototype.isCollidedWith = function (otherObject) {
 
 };
 
+MovingObject.prototype.stop = function () {
+    this.vel = [0, 0];
+}
+
 
 
 module.exports = MovingObject;

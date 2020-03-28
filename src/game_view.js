@@ -17,20 +17,24 @@ GameView.prototype.start = function () {
         that.gameState.draw(that.game, that.ctx);
     }, 20);
     this.bindKeyHandlers();
+    document.addEventListener("keyup", function (e) {
+        let keycode = e.which || window.event.keycode;
+        // let keycode = e.keyCode;
+        if (keycode === 65 || keycode === 68 ) {
+            that.game.ship.stop();
+        }
+    })
 }
 
 
 GameView.prototype.left = function (ship) {
-    ship.power([-1, 0]);
+    ship.power([-5, 0]);
 }
 
 GameView.prototype.right = function (ship) {
-    ship.power([1, 0]);
+    ship.power([5, 0]);
 }
 
-GameView.prototype.stopShip = function (ship) {
-    ship.vel = [0, 0];
-}
 
 GameView.prototype.bindKeyHandlers = function () {
     const game = this.game;

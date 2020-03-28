@@ -23,15 +23,5 @@ window.addEventListener('DOMContentLoaded', (event) => {
     window.gv = gv;
     gv.start();
 
-    // not sure if this is a place to put it
-    document.addEventListener("keyup", function (e) {
-        let keycode = e.which || window.event.keycode;
-        if (keycode === 65 || keycode === 68 || keycode === 32) {
-            gv.stopShip(g.ship);
-        }
-    })
-
-
-
     console.log('DOM fully loaded and parsed');
 });
