@@ -3,6 +3,7 @@ const Bullet = require("./bullet.js");
 const Alien = require("./alien.js");
 const AlienBullet = require("./alien_bullet");
 const GameOver = require("./game_over");
+const Animate = require("./animate");
 
 
 
@@ -18,6 +19,7 @@ Game.prototype.initializeLevel = function () {
     this.gameOver = false;
     this.bullets = [];
     this.aliens = [];
+    this.animations = [];
     this.alienBullets = [];
     this.ship = new Ship({ pos: this.shipPosition(), game: this })
     this.addAliens();
@@ -49,6 +51,11 @@ Game.prototype.addAliens = function () {
 Game.prototype.draw = function (game, ctx) {
     ctx.clearRect(0, 0, this.width, this.height);
     this.allObjects().forEach(obj => obj.draw(ctx));
+}
+
+Game.prototype.animate = function (timeDelta) {
+    this.allObjects().forEach(obj => obj.animate(timeDelta));
+
 }
 
 Game.prototype.moveObjects = function (timeDelta) {
@@ -89,6 +96,7 @@ Game.prototype.checkCollisions = function () {
 Game.prototype.step = function (timeDelta) {
 
     this.moveObjects(timeDelta);
+    this.animate();
     this.fireAlienBullets();
     this.checkCollisions();
 // debugger
@@ -106,13 +114,15 @@ Game.prototype.remove = function (obj) {
         this.bullets.splice(this.bullets.indexOf(obj), 1)
     } else if (obj instanceof AlienBullet) {
         this.alienBullets.splice(this.alienBullets.indexOf(obj), 1)
-    } 
+    } else if (obj instanceof Animate) {
+        this.animations.splice(this.animations.indexOf(obj), 1)
+    }
 }
 
 
 Game.prototype.allObjects = function () {
     // ship does not collide with anything 
-    let x = this.aliens.concat(this.alienBullets).concat(this.bullets).concat(this.ship);
+    let x = this.aliens.concat(this.alienBullets).concat(this.bullets).concat(this.ship).concat(this.animations);
     return x;
 }
 
@@ -124,6 +134,8 @@ Game.prototype.add = function (obj) {
         this.bullets.push(obj)
     } else if (obj instanceof AlienBullet) {
         this.alienBullets.push(obj)
+    } else if (obj instanceof Animate) {
+        this.animations.push(obj)
     }
 }
 

@@ -47,7 +47,6 @@ GameView.prototype.bindKeyHandlers = function () {
 
 GameView.prototype.animate = function animate(time) {
     const timeDelta = time - this.lastTime;
-
     this.gameState.step(timeDelta);
     this.gameState.draw(this.game, this.ctx);
     this.lastTime = time;

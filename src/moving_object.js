@@ -82,6 +82,8 @@ MovingObject.prototype.stop = function () {
     this.vel = [0, 0];
 }
 
-
+MovingObject.prototype.animate = function (timeDelta) {
+    
+}
 
 module.exports = MovingObject;
