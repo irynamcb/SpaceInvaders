@@ -96,7 +96,7 @@ Game.prototype.checkCollisions = function () {
 Game.prototype.step = function (timeDelta) {
 
     this.moveObjects(timeDelta);
-    this.animate();
+    this.animate(timeDelta);
     this.fireAlienBullets();
     this.checkCollisions();
 // debugger

@@ -29,11 +29,12 @@ function Animate(options, imageName, animationLength) {
 
 Animate.prototype.frameName = function (frame) {
     let s = '000' + frame;
-    s = s.substr(s.length-3);
+    s = s.substr(s.length - 3);
     return `../images/${this.imageName}${s}.png`
 }
 
 Animate.prototype.animate = function (timeDelta) {
+    // debugger
     this.frame += 1;
     if (this.frame < this.animationLength) {
         this.animateImage.src = this.frameName(this.frame);

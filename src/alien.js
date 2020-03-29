@@ -12,12 +12,14 @@ Alien.RADIUS = 20;
 
 function Alien(options) {
 
-    const alienImage = new Image();
-    alienImage.src = '../images/starship8_3.png';
+    this.time = 0;
+    this.alienImage = new Image();
+    this.alienImage.src = '../images/starship8_3.png';
+    this.lastImage = -1;
 
     let moOptions = {
         pos: options.pos,
-        image: alienImage,
+        image: this.alienImage,
         width: 40,
         height: 34,
         radius: Alien.RADIUS,
@@ -29,7 +31,6 @@ function Alien(options) {
 
 
 Alien.prototype.collideWith = function (otherObject) {
-    // will need to change this to kill the ship
 
     if (otherObject instanceof Ship) {
         this.game.remove(this);
@@ -37,9 +38,13 @@ Alien.prototype.collideWith = function (otherObject) {
     } else if (otherObject instanceof Bullet) {
         this.game.remove(otherObject);
         this.game.remove(this);
-        let exposion = new Animate ({pos: [this.pos[0], this.pos[1]], game: this.game, width: this.width, height: this.height}, "explosions/tile", 48);
+        let exposion = new Animate ({pos: [this.pos[0], this.pos[1]], game: this.game, width: this.width * 2, height: this.height * 2}, "explosions/tile", 48);
         this.game.add(exposion);
     } 
+}
+
+Alien.prototype.animate = function (timeDelta) {
+    
 }
 
 Alien.prototype.fireBullet = function () {
