@@ -1,20 +1,20 @@
 
 function LevelStart() {
     this.countdownMessage = "3";
-    this.countdown = 120;
+    this.countdown = 0;
 }
 
-LevelStart.prototype.step = function () {
+LevelStart.prototype.step = function (timeDelta) {
 
-    this.countdown -= 1;
+this.countdown += timeDelta;
 
-    if (this.countdown <= 80) {
+    if (this.countdown >= 1000) {
         this.countdownMessage = "2";
     }
-    if (this.countdown <= 40) {
+    if (this.countdown >= 2000) {
         this.countdownMessage = "1";
     }
-    if (this.countdown <= 0) {
+    if (this.countdown >= 3000) {
        window.gv.game.initializeLevel();
        window.gv.gameState = window.gv.game;
     }

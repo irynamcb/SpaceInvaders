@@ -51,15 +51,15 @@ Game.prototype.draw = function (game, ctx) {
     this.allObjects().forEach(obj => obj.draw(ctx));
 }
 
-Game.prototype.moveObjects = function () {
-    this.allObjects().forEach(obj => obj.move());
+Game.prototype.moveObjects = function (timeDelta) {
+    this.allObjects().forEach(obj => obj.move(timeDelta));
 
     if (this.areAliensOutOfBounds()) {
         
         this.aliens.forEach(alien => {
             alien.vel[0] = (alien.vel[0] * -1);
             alien.vel[1] += 30;
-            alien.move();
+            alien.move(timeDelta);
             alien.vel[1] = 0;
         });
     }
@@ -86,12 +86,12 @@ Game.prototype.checkCollisions = function () {
     }
 };
 
-Game.prototype.step = function () {
+Game.prototype.step = function (timeDelta) {
 
-    this.moveObjects();
+    this.moveObjects(timeDelta);
     this.fireAlienBullets();
     this.checkCollisions();
-
+// debugger
     if (this.aliens.length === 0 || this.gameOver) {
         window.gv.gameState = new GameOver(); 
     } 

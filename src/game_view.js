@@ -11,12 +11,9 @@ function GameView(game, ctx) {
 
 GameView.prototype.start = function () {
     let that = this;
-
-    setInterval(function () {
-        that.gameState.step();
-        that.gameState.draw(that.game, that.ctx);
-    }, 20);
     this.bindKeyHandlers();
+    this.lastTime = 0;
+
     document.addEventListener("keyup", function (e) {
         let keycode = e.which || window.event.keycode;
         // let keycode = e.keyCode;
@@ -24,6 +21,7 @@ GameView.prototype.start = function () {
             that.game.ship.stop();
         }
     })
+    requestAnimationFrame(this.animate.bind(this));
 }
 
 
@@ -46,5 +44,15 @@ GameView.prototype.bindKeyHandlers = function () {
         window.gv.gameState = new LevelStart();
     });
 }
+
+GameView.prototype.animate = function animate(time) {
+    const timeDelta = time - this.lastTime;
+
+    this.gameState.step(timeDelta);
+    this.gameState.draw(this.game, this.ctx);
+    this.lastTime = time;
+    requestAnimationFrame(this.animate.bind(this));
+};
+
 
 module.exports = GameView;

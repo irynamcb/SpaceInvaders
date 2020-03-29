@@ -2,7 +2,7 @@ function GameOver() {
 
 }
 
-GameOver.prototype.step = function (game) {
+GameOver.prototype.step = function (timeDelta) {
 
 };
 

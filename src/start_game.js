@@ -9,7 +9,7 @@ StartGame.prototype.enter = function (game) {
 
 };
 
-StartGame.prototype.step = function (game) {
+StartGame.prototype.step = function (timeDelta) {
 
 
 };
