@@ -20,6 +20,6 @@ When you kill an alien, there is an explosion!
 
 ## Future features
 
-I am planning to implement different levels of complexity.
-Add different movements for the aliens.
-Add animation for the alien ships.
+* I am planning to implement different levels of complexity.
+* Add different movements for the aliens.
+* Add animation for the alien ships.
