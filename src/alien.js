@@ -14,7 +14,7 @@ function Alien(options) {
 
     this.time = 0;
     this.alienImage = new Image();
-    this.alienImage.src = '../images/starship8_3.png';
+    this.alienImage.src = './images/starship8_3.png';
     this.lastImage = -1;
 
     let moOptions = {
@@ -38,14 +38,11 @@ Alien.prototype.collideWith = function (otherObject) {
     } else if (otherObject instanceof Bullet) {
         this.game.remove(otherObject);
         this.game.remove(this);
-        let exposion = new Animate ({pos: [this.pos[0], this.pos[1]], game: this.game, width: this.width * 2, height: this.height * 2}, "explosions/tile", 48);
+        let exposion = new Animate ({pos: [this.pos[0] - this.width / 2, this.pos[1] - this.height / 2], game: this.game, vel: [this.vel[0] / 2, 0], width: this.width * 2, height: this.height * 2}, "explosions/spritesheet", 48);
         this.game.add(exposion);
     } 
 }
 
-Alien.prototype.animate = function (timeDelta) {
-    
-}
 
 Alien.prototype.fireBullet = function () {
     

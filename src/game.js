@@ -53,10 +53,6 @@ Game.prototype.draw = function (game, ctx) {
     this.allObjects().forEach(obj => obj.draw(ctx));
 }
 
-Game.prototype.animate = function (timeDelta) {
-    this.allObjects().forEach(obj => obj.animate(timeDelta));
-
-}
 
 Game.prototype.moveObjects = function (timeDelta) {
     this.allObjects().forEach(obj => obj.move(timeDelta));
@@ -96,7 +92,6 @@ Game.prototype.checkCollisions = function () {
 Game.prototype.step = function (timeDelta) {
 
     this.moveObjects(timeDelta);
-    this.animate(timeDelta);
     this.fireAlienBullets();
     this.checkCollisions();
 // debugger

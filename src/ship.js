@@ -13,7 +13,7 @@ Ship.HEIGHT = 40;
 function Ship(options) {
 
     const shipImage = new Image();
-    shipImage.src = '../images/starship15_5.png';
+    shipImage.src = './images/starship15_5.png';
 
     let moOptions = {
         pos: options.pos,

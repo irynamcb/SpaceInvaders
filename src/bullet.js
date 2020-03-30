@@ -9,7 +9,7 @@ Bullet.RADIUS = 4;
 function Bullet(options) {
 
     const bulletImage = new Image();
-    bulletImage.src = '../images/11.png';
+    bulletImage.src = './images/11.png';
 
     let moOptions = {
         pos: options.pos,
