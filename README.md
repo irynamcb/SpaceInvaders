@@ -4,9 +4,9 @@ This game is written in plain Javascript (ES5 syntax) as one of my App Academy p
 
 No jQuery or any other third party libraries, just plain JavaScript, CSS and HTML.
 
-See it live: https://irynamcb.github.io/
+See it live: https://irynamcb.github.io/SpaceDestroyers
 
-[![Space Invaders Screenshot](./screenshot.png "Screenshot")](https://irynamcb.github.io/)
+[![Space Invaders Screenshot](./screenshot.png "Screenshot")](https://irynamcb.github.io/SpaceDestroyers)
 
 ## Intro
 
